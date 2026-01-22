@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Contract{% endblock %}
+
+{% block body %}
+    <h1>Register Contract</h1>
+
+    {% for message in app.flashes('success') %}
+        <div style="padding: 8px; border: 1px solid #0a0; margin-bottom: 10px;">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.contractNumber) }}
+        {{ form_widget(form.contractNumber) }}
+        {{ form_errors(form.contractNumber) }}
+    </div>
+
+    <div>
+        {{ form_label(form.contractDate) }}
+        {{ form_widget(form.contractDate) }}
+        {{ form_errors(form.contractDate) }}
+    </div>
+
+    <div>
+        {{ form_label(form.totalAmount) }}
+        {{ form_widget(form.totalAmount) }}
+        <small>{{ form_help(form.totalAmount) }}</small>
+        {{ form_errors(form.totalAmount) }}
+    </div>
+
+    <div>
+        {{ form_label(form.months) }}
+        {{ form_widget(form.months) }}
+        <small>{{ form_help(form.months) }}</small>
+        {{ form_errors(form.months) }}
+    </div>
+
+    <div>
+        {{ form_label(form.paymentProvider) }}
+        {{ form_widget(form.paymentProvider) }}
+        {{ form_errors(form.paymentProvider) }}
+    </div>
+
+    <button type="submit">Save</button>
+    {{ form_end(form) }}
+{% endblock %}

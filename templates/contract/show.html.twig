@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contract {{ contract.contractNumber }}{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div style="padding: 8px; border: 1px solid #0a0; margin-bottom: 10px;">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <h1>Contract Created</h1>
+
+    <ul>
+        <li><strong>Number:</strong> {{ contract.contractNumber }}</li>
+        <li><strong>Date:</strong> {{ contract.contractDate|date('Y-m-d') }}</li>
+        <li><strong>Total (COP):</strong> {{ contract.totalAmount }}</li>
+        <li><strong>Months:</strong> {{ contract.months }}</li>
+        <li><strong>Provider:</strong> {{ contract.paymentProviderLabel }}</li>
+    </ul>
+
+    <a href="{{ path('contract_new') }}">Create another</a>
+{% endblock %}
